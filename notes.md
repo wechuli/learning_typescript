@@ -68,7 +68,13 @@ Always
 - _Type annotations for functions_ - Code we add to tell TypeScript what type of arguments a function will receive and what type of values it will return
 - _Type inference for functions_ - TypeScript tries to figure out what type of value a function will return
 
-
 No type inference for arguments. Type inference works for the output.
 
 ### Types Arrays
+
+Arrays where each element is some consistent type of value.
+
+- TS can do type inference when extracting values from an array
+- TS can prevent us from adding incompatible values to the array
+- We can get help with 'map', 'forEach','reduce' functions
+- Flexible - arrays can still contain multiple different types
