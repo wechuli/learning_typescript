@@ -49,13 +49,26 @@ Typescript tries to figure out what type of value a variable refers to.
 If declaration and initialization are on the same line, TypeScript will figure out the type of variable for us.
 
 #### When to use Type annotations
+
 - When we declare a variable on one line then initialize it later
 - When we want a variable to have a type that can't be inferred
 - When a function returns the 'any' type and we need to clarify the value
 
 ### When to use Type Inference
+
 Always
 
 ### any
+
 - means TS has no idea what this is - can't check for correct property references
 - avoid variables with 'any' at all costs
+
+### Annotation for Functions and Objects
+
+- _Type annotations for functions_ - Code we add to tell TypeScript what type of arguments a function will receive and what type of values it will return
+- _Type inference for functions_ - TypeScript tries to figure out what type of value a function will return
+
+
+No type inference for arguments. Type inference works for the output.
+
+### Types Arrays
