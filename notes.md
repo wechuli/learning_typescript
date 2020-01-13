@@ -84,3 +84,7 @@ Tuple - Array-like structure where each element represents some property of a re
 ## Interfaces
 
 Creates a new type, describes the property names and value types of an object
+
+### Strategy for Reusable Code in TS
+- Create functions that accept arguments that are typed with interfaces
+- Objects/classes can decide to 'implement' a given interface to work with a function
