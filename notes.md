@@ -81,5 +81,6 @@ Arrays where each element is some consistent type of value.
 
 Tuple - Array-like structure where each element represents some property of a record.
 
-
 ## Interfaces
+
+Creates a new type, describes the property names and value types of an object
