@@ -78,3 +78,8 @@ Arrays where each element is some consistent type of value.
 - TS can prevent us from adding incompatible values to the array
 - We can get help with 'map', 'forEach','reduce' functions
 - Flexible - arrays can still contain multiple different types
+
+Tuple - Array-like structure where each element represents some property of a record.
+
+
+## Interfaces
