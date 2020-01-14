@@ -86,5 +86,14 @@ Tuple - Array-like structure where each element represents some property of a re
 Creates a new type, describes the property names and value types of an object
 
 ### Strategy for Reusable Code in TS
+
 - Create functions that accept arguments that are typed with interfaces
 - Objects/classes can decide to 'implement' a given interface to work with a function
+
+## Classes
+
+Blueprint to create an object with some fields (values) and methods (functions) to represent a 'thing'
+
+- Public - this method can be called any where any time
+- private - this method can only be called by other methods in this class
+- protected - this method can be called by other methods in this class or by other methods in child classes
