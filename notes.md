@@ -101,3 +101,10 @@ Blueprint to create an object with some fields (values) and methods (functions) 
 ## Design Patterns in TypeScript
 
 In software engineering, a software design pattern is a general, reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. Rather, it is a description or template for how to solve a problem that can be used in many different situations. Design patterns are formalized best practices that the programmer can use to solve common problems when designing an application or system.
+
+
+### Type Definition Files
+
+In order for TypeScript to perform the type checking, the types need to be defined somewhere. It's pretty straightforward how to add type definitions to the variables declared in your own code, but how does TypeScript know about the types of variables and functions of existing JavaScript libraries?
+
+This is where type definition files come into play. They allow you to provide type information for JavaScript code that is by itself not statically typed. The file extension for such a file is .d.tx, where d stands for definition. Type definition files make it possible to enjoy the benefits of type checking, autocompletion and member documentation.
