@@ -1,10 +1,11 @@
 import faker from "faker";
+import { IMappable, IFakeInterface } from "./CustomMap";
 
-
-export class User {
+export class User implements IMappable, IFakeInterface {
   name: string;
+  color: string;
 
-  // this is just an object, we have not yet initialized an object
+  // this is just a definition, we have not yet initialized an object
   location: {
     lat: number;
     lng: number;
@@ -16,6 +17,7 @@ export class User {
       lng: parseFloat(faker.address.longitude())
     };
   }
+  markerContent(): string {
+    return `User Name: ${this.name}`;
+  }
 }
-
-

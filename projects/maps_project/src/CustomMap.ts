@@ -1,6 +1,18 @@
 import { User } from "./User";
 import { Company } from "./Company";
+import {} from "googlemaps";
 
+export interface IMappable {
+  location: {
+    lat: number;
+    lng: number;
+  };
+  markerContent(): string;
+}
+
+export interface IFakeInterface{
+  color:string
+}
 export class CustomMap {
   private googleMap: google.maps.Map;
   constructor(element: string) {
@@ -9,32 +21,21 @@ export class CustomMap {
       center: { lat: 0, lng: 0 }
     });
   }
-  //   addUserMarker(user: User): void {
-  //     new google.maps.Marker({
-  //       map: this.googleMap,
-  //       position: {
-  //         lat: user.location.lat,
-  //         lng: user.location.lng
-  //       }
-  //     });
-  //   }
-  //   addCompanyMarker(company: Company): void {
-  //     new google.maps.Marker({
-  //       map: this.googleMap,
-  //       position: {
-  //         lat: company.location.lat,
-  //         lng: company.location.lng
-  //       }
-  //     });
-  //   }
 
-  addMarker(mappable: User | Company): void {
-    new google.maps.Marker({
+  addMarker(mappable: IMappable): void {
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    });
+
+    marker.addListener("click", () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent();
+      });
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
