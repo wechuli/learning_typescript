@@ -8,11 +8,17 @@ var Sorter = /** @class */ (function () {
         var arraylength = this.collection.length;
         for (var i = 0; i < arraylength; i++) {
             for (var j = 0; j < arraylength - i - 1; j++) {
-                if (this.collection[j] > this.collection[j + 1]) {
-                    _a = [
-                        this.collection[j + 1],
-                        this.collection[j]
-                    ], this.collection[j] = _a[0], this.collection[j + 1] = _a[1];
+                // If collection is an array of numbers
+                if (this.collection instanceof Array) {
+                    if (this.collection[j] > this.collection[j + 1]) {
+                        _a = [
+                            this.collection[j + 1],
+                            this.collection[j]
+                        ], this.collection[j] = _a[0], this.collection[j + 1] = _a[1];
+                    }
+                }
+                // when this.collection is a string
+                if (typeof this.collection === 'string') {
                 }
             }
         }
