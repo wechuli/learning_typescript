@@ -1,19 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Sorter = /** @class */ (function () {
-    function Sorter(collection) {
-        this.collection = collection;
+    function Sorter() {
     }
     Sorter.prototype.bubbleSort = function () {
-        var arraylength = this.collection.length;
+        var arraylength = this.length;
         for (var i = 0; i < arraylength; i++) {
             for (var j = 0; j < arraylength - i - 1; j++) {
-                if (this.collection.compare(j, j + 1)) {
-                    this.collection.swap(j, j + 1);
+                if (this.compare(j, j + 1)) {
+                    this.swap(j, j + 1);
                 }
             }
         }
-        console.log(this.collection);
     };
     return Sorter;
 }());

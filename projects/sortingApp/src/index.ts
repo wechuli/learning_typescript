@@ -1,5 +1,6 @@
 import { Sorter } from "./sorter";
 import { NumbersCollection, CharactersCollection } from "./collections";
+import { LinkedList } from "./linkedList";
 
 let numberCollection = new NumbersCollection([
   1,
@@ -14,11 +15,26 @@ let numberCollection = new NumbersCollection([
   33,
   2
 ]);
-let numberSorter = new Sorter(numberCollection);
-numberSorter.bubbleSort();
+
+numberCollection.bubbleSort();
+console.log(numberCollection.data);
 
 let characterCollection = new CharactersCollection(
   "kfkfdlksoewewemeawemABcCCc"
 );
-let charSorter = new Sorter(characterCollection);
-charSorter.bubbleSort();
+
+characterCollection.bubbleSort();
+console.log(characterCollection.data);
+
+
+
+const linkedList = new LinkedList();
+linkedList.add(500);
+linkedList.add(23);
+linkedList.add(0);
+linkedList.add(-443);
+linkedList.add(3);
+
+linkedList.bubbleSort();
+
+linkedList.print();
