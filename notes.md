@@ -132,3 +132,19 @@ to watch for any changes
 - Can contain real implementation for some methods
 - The implemented methods can refer to other methods that don't exist yes ( we still have to provide names and types for the un-implemented methods)
 - Can make child classes promise to implement some other method
+
+### Interfaces Vs Abstract Classes
+
+#### Interfaces
+
+- Sets up a contract between different classes
+- Use when we have very different objects that we want to work together
+- Promotes loose coupling
+
+#### Inheritance/Abstract Classes
+
+- Sets up a contract between different classes
+- Use when we are trying to build a definition of an object
+- Strongly couples classes together
+
+In general, reach for interfaces in code reuse unless we are in a scenario where we have different objects that are closely related, where you can use abstract classes and inheritance.

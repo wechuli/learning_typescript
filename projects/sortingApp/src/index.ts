@@ -1,7 +1,7 @@
-import { Sorter } from "./sorter";
 import { NumbersCollection, CharactersCollection } from "./collections";
 import { LinkedList } from "./linkedList";
 
+// sorting numbers collection
 let numberCollection = new NumbersCollection([
   1,
   2,
@@ -19,15 +19,14 @@ let numberCollection = new NumbersCollection([
 numberCollection.bubbleSort();
 console.log(numberCollection.data);
 
+// sorting a character collection
 let characterCollection = new CharactersCollection(
   "kfkfdlksoewewemeawemABcCCc"
 );
-
 characterCollection.bubbleSort();
 console.log(characterCollection.data);
 
-
-
+// sorting a linked list
 const linkedList = new LinkedList();
 linkedList.add(500);
 linkedList.add(23);

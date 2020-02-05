@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var collections_1 = require("./collections");
 var linkedList_1 = require("./linkedList");
+// sorting numbers collection
 var numberCollection = new collections_1.NumbersCollection([
     1,
     2,
@@ -17,9 +18,11 @@ var numberCollection = new collections_1.NumbersCollection([
 ]);
 numberCollection.bubbleSort();
 console.log(numberCollection.data);
+// sorting a character collection
 var characterCollection = new collections_1.CharactersCollection("kfkfdlksoewewemeawemABcCCc");
 characterCollection.bubbleSort();
 console.log(characterCollection.data);
+// sorting a linked list
 var linkedList = new linkedList_1.LinkedList();
 linkedList.add(500);
 linkedList.add(23);
