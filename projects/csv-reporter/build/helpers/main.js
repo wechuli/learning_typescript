@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs_1 = __importDefault(require("fs"));
 var csv_parser_1 = __importDefault(require("csv-parser"));
+var moment_1 = __importDefault(require("moment"));
 function readCSV(filePath) {
     return new Promise(function (resolve, reject) {
         var results = [];
@@ -20,7 +21,7 @@ function readCSV(filePath) {
 exports.readCSV = readCSV;
 function dataFormater(data) {
     return {
-        date: new Date(data.date),
+        date: new Date(moment_1.default.utc(data.date, "DD/MM/YYYY").format()),
         home_team: data.home_team,
         away_team: data.away_team,
         home_team_score: parseInt(data.home_team_score),

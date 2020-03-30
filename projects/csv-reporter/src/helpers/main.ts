@@ -1,5 +1,6 @@
 import fs from "fs";
 import csv from "csv-parser";
+import moment from "moment";
 
 interface Iresults {
   date: Date;
@@ -27,7 +28,7 @@ export function readCSV(filePath: string): Promise<Iresults[]> {
 
 function dataFormater(data: any): Iresults {
   return {
-    date: new Date(data.date),
+    date: new Date(moment.utc(data.date, "DD/MM/YYYY").format()),
     home_team: data.home_team,
     away_team: data.away_team,
     home_team_score: parseInt(data.home_team_score),
