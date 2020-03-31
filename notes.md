@@ -148,3 +148,22 @@ to watch for any changes
 - Strongly couples classes together
 
 In general, reach for interfaces in code reuse unless we are in a scenario where we have different objects that are closely related, where you can use abstract classes and inheritance.
+
+### Enums
+
+- Follow near-identical syntax rules as normal objects
+- Creates an object with the same keys and values when converted from TS to JS
+- Primary goal is to signal to other engineers that these are all closely related values
+- Use whenever we have a small fixed set of values that are all closely related and know at compile time.
+
+### Type Assetions
+
+Sometimes you'll end up in a situation where you'll know more about a value than TypeScript does. Usually this will happen when you know the type of some entity could be more specific than its current type. Type assertions are a way to tell the compiler “trust me, I know what I’m doing.” A type assertion is like a type cast in other languages, but performs no special checking or restructuring of data. It has no runtime impact, and is used purely by the compiler. TypeScript assumes that you, the programmer, have performed any special checks that you need.
+
+### Generics
+
+- Like function arguments, but for types in class/function definitions
+- Allows us to define the type of a property/argument/return value at a future point
+- Used heavily when writing reusable code.
+
+A major part of software engineering is building components that not only have well-defined and consistent APIs, but are reusable. One of the main tools in the toolbox for creating reusable components is generics, that is, being able to create a component that can work over a variety of types rather than on a single one. This allows users to consume these components and use their own types.
