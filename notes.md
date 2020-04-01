@@ -167,3 +167,8 @@ Sometimes you'll end up in a situation where you'll know more about a value than
 - Used heavily when writing reusable code.
 
 A major part of software engineering is building components that not only have well-defined and consistent APIs, but are reusable. One of the main tools in the toolbox for creating reusable components is generics, that is, being able to create a component that can work over a variety of types rather than on a single one. This allows users to consume these components and use their own types.
+
+### Inheritance VS Composition
+
+- **Inheritance** - Characterized by an 'is a' relationship between two classes
+- **Composition** - Characterized by 'has a' relationship between two classes

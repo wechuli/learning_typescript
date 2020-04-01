@@ -1,9 +1,21 @@
-import {CSVReader} from './csvReader';
 import MatchResult from "./MatchResult";
 import { dateStringTodate } from "./utils";
 
-export class MatchReader{
-    mapRow(row: string[]): MatchData {
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+
+interface DataReader {
+  read(): void;
+  data: string[][];
+}
+
+export class MatchReader {
+  matches: MatchData[] = [];
+  constructor(public reader: DataReader) {}
+
+  load(): void {
+    this.reader.read();
+    this.matches = this.reader.data.map(
+      (row: string[]): MatchData => {
         return [
           dateStringTodate(row[0]),
           row[1],
@@ -14,4 +26,6 @@ export class MatchReader{
           row[6]
         ];
       }
+    );
+  }
 }

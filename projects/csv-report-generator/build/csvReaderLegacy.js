@@ -3,21 +3,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs_1 = __importDefault(require("fs"));
-var utils_1 = require("./utils");
-var CSVReader = /** @class */ (function () {
-    function CSVReader(filename) {
+const fs_1 = __importDefault(require("fs"));
+const utils_1 = require("./utils");
+class CSVReader {
+    constructor(filename) {
         this.filename = filename;
         this.data = [];
     }
-    CSVReader.prototype.read = function () {
+    read() {
         this.data = fs_1.default
             .readFileSync(this.filename, { encoding: "utf-8" })
             .split("\n")
-            .map(function (row) {
+            .map((row) => {
             return row.split(",");
         })
-            .map(function (row) {
+            .map((row) => {
             return [
                 utils_1.dateStringTodate(row[0]),
                 row[1],
@@ -28,7 +28,6 @@ var CSVReader = /** @class */ (function () {
                 row[6]
             ];
         });
-    };
-    return CSVReader;
-}());
+    }
+}
 exports.CSVReader = CSVReader;

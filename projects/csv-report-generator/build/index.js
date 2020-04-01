@@ -3,14 +3,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var csvReader_1 = require("./csvReader");
-var MatchResult_1 = __importDefault(require("./MatchResult"));
-var reader = new csvReader_1.CSVReader("football.csv");
-reader.read();
-console.log(reader.data[0]);
-var manUnitedWins = 0;
-for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
-    var match = _a[_i];
+const MatchReader_1 = require("./MatchReader");
+const csvReader_1 = require("./csvReader");
+const MatchResult_1 = __importDefault(require("./MatchResult"));
+// create an object that satisfies the 'DataReader' interface
+const csvReader = new csvReader_1.CSVReader("football.csv");
+// create an instance of MatchReader and pass in something satisying the DataREader interface
+const matchReader = new MatchReader_1.MatchReader(csvReader);
+matchReader.load();
+let manUnitedWins = 0;
+for (let match of matchReader.matches) {
     if (match[1] === "Man United" && match[5] === MatchResult_1.default.HomeWin) {
         manUnitedWins++;
     }
@@ -18,4 +20,4 @@ for (var _i = 0, _a = reader.data; _i < _a.length; _i++) {
         manUnitedWins++;
     }
 }
-console.log(manUnitedWins);
+console.log("Man United won ", manUnitedWins, "games");
