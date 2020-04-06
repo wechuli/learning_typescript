@@ -11,7 +11,7 @@ class LinkedListNode {
 export class LinkedList extends Sorter implements ISortable {
   head: LinkedListNode | null = null;
   private count: number = 0;
-  add(data: number): void {
+  add(data: number): void { 
     const node = new LinkedListNode(data);
     if (!this.head) {
       this.head = node;

@@ -1,10 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
+const csvReader_1 = require("./csvReader");
 class MatchReader {
     constructor(reader) {
         this.reader = reader;
         this.matches = [];
+    }
+    static fromCsv(filename) {
+        return new MatchReader(new csvReader_1.CSVReader(filename));
     }
     load() {
         this.reader.read();
@@ -16,7 +20,7 @@ class MatchReader {
                 parseInt(row[3]),
                 parseInt(row[4]),
                 row[5],
-                row[6]
+                row[6],
             ];
         });
     }
