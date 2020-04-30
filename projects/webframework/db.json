@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "New name",
-      "age": 202
+      "name": "newer name",
+      "age": 90
     },
     {
       "name": "Paul WEchu",
@@ -14,11 +14,6 @@
       "name": "Paul WEchu",
       "age": 0,
       "id": 3
-    },
-    {
-      "name": "Paul WEchu",
-      "age": 0,
-      "id": 4
     }
   ]
 }

@@ -1,46 +1,58 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { Eventing } from "./Eventing";
+import { Sync } from "./Sync";
+import { Attributes } from "./Attributes";
 
-interface IUser {
+export interface IUser {
   id?: number;
   name?: string;
   age?: number;
 }
 
+const rootUrl = "http://localhost:3000/users";
+
 export class User {
-  events: Eventing = new Eventing();
+  public events: Eventing = new Eventing();
+  public sync: Sync<IUser> = new Sync<IUser>(rootUrl);
+  public attributes: Attributes<IUser>;
 
-  constructor(private data: IUser) {}
+  constructor(attrs: IUser) {
+    this.attributes = new Attributes<IUser>(attrs);
+  }
 
-  get(propName: string): number | string {
-    return this.data[propName];
+  get on() {
+    return this.events.on;
+  }
+
+  get trigger() {
+    return this.events.trigger;
+  }
+  get get() {
+    return this.attributes.get;
   }
 
   set(update: IUser): void {
-    Object.assign(this.data, update);
+    this.attributes.set(update);
+    this.events.trigger("change");
   }
-
-  async fetch(): Promise<void> {
-    const response: AxiosResponse = await axios.get(
-      `http://localhost:3000/users/${this.get("id")}`
-    );
-    this.set(response.data);
-  }
-
-  async save(): Promise<void> {
-    const id = this.get("id");
-    if (id) {
-      // put
-      const response = await axios.put(
-        `http://localhost:3000/users/${id}`,
-        this.data
-      );
-    } else {
-      // post
-      const response = await axios.post(
-        "http://localhost:3000/users",
-        this.data
-      );
+  fetch(): void {
+    const id = this.attributes.get("id");
+    if (!id) {
+      throw new Error("Cannot ftech without an id");
     }
+    this.sync.fetch(id).then((response: AxiosResponse): void => {
+      this.set(response.data);
+    });
+  }
+
+  save(): void {
+    this.sync
+      .save(this.attributes.getAll())
+      .then((response: AxiosResponse): void => {
+        this.trigger("save");
+      })
+      .catch(() => {
+        this.trigger("error");
+      });
   }
 }
