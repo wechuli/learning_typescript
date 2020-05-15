@@ -38,7 +38,7 @@ export class User {
   fetch(): void {
     const id = this.attributes.get("id");
     if (!id) {
-      throw new Error("Cannot ftech without an id");
+      throw new Error("Cannot fetch without an id");
     }
     this.sync.fetch(id).then((response: AxiosResponse): void => {
       this.set(response.data);

@@ -1,7 +1,7 @@
 import { User } from "./models/User";
 import axios from "axios";
 
-const user = new User({ id: 1, name: "newer name", age: 90 });
+const user = new User({ id: 1 });
 
 // console.log(user.get("name"));
 
@@ -13,8 +13,16 @@ user.on("save", () => {
   console.log("user has been saved");
 });
 
+user.on("error", () => {
+  console.log("There was an error doing that operation");
+});
+
+user.set({ name: "user change" });
 user.save();
 
 console.log(user);
 //user.fetch();
-// user.set({name:"user change"})
+
+user.fetch();
+
+console.log(user);

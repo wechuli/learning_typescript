@@ -4,7 +4,7 @@ type Callback = () => void;
 interface IModelAttributes<T> {
   set(value: T): void;
   getAll(): T;
-  get<K extends keyof T>(key: K): T[k];
+  get<K extends keyof T>(key: K): T[K];
 }
 interface ISync<T> {
   fetch(id: number): AxiosPromise;

@@ -14,6 +14,6 @@ export class Attributes<T> {
   }
 }
 
-const attrs = new Attributes<IUser>({ id: 5, age: 27, name: "Paul" });
+// const attrs = new Attributes<IUser>({ id: 5, age: 27, name: "Paul" });
 
-const name = attrs.get("name");
+// const name = attrs.get("name");

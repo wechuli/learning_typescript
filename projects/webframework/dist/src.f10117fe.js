@@ -2304,13 +2304,8 @@ function () {
   return Attributes;
 }();
 
-exports.Attributes = Attributes;
-var attrs = new Attributes({
-  id: 5,
-  age: 27,
-  name: "Paul"
-});
-var name = attrs.get("name");
+exports.Attributes = Attributes; // const attrs = new Attributes<IUser>({ id: 5, age: 27, name: "Paul" });
+// const name = attrs.get("name");
 },{}],"src/models/User.ts":[function(require,module,exports) {
 "use strict";
 
@@ -2368,7 +2363,7 @@ function () {
     var id = this.attributes.get("id");
 
     if (!id) {
-      throw new Error("Cannot ftech without an id");
+      throw new Error("Cannot fetch without an id");
     }
 
     this.sync.fetch(id).then(function (response) {
@@ -2400,9 +2395,7 @@ Object.defineProperty(exports, "__esModule", {
 var User_1 = require("./models/User");
 
 var user = new User_1.User({
-  id: 1,
-  name: "newer name",
-  age: 90
+  id: 1
 }); // console.log(user.get("name"));
 
 user.on("change", function () {
@@ -2411,9 +2404,17 @@ user.on("change", function () {
 user.on("save", function () {
   console.log("user has been saved");
 });
+user.on("error", function () {
+  console.log("There was an error doing that operation");
+});
+user.set({
+  name: "user change"
+});
 user.save();
 console.log(user); //user.fetch();
-// user.set({name:"user change"})
+
+user.fetch();
+console.log(user);
 },{"./models/User":"src/models/User.ts"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -2442,7 +2443,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63470" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49605" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
