@@ -1,0 +1,7 @@
+{
+  "name": "custom_types",
+  "version": "1.0.0",
+  "description": "custom",
+  "main": "index.js",
+  "license": "MIT"
+}
