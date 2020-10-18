@@ -1,13 +1,13 @@
-import { Request, Response, NextFunction } from "express";
-import { loginSchema } from "./requestValidators";
+import Joi from "joi";
 
-try {
-  let value = loginSchema.validateAsync({ name: "sdd", asa: 90 });
-  console.log(value);
-} catch (error) {
-  console.log(error);
-}
+export const loginSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+});
 
-// setTimeout(() => {
-//   console.log("dd");
-// }, 1000);
+export const taskSchema = Joi.object({
+  title:Joi.string().required(),
+  description:Joi.string().required(),
+  start_date:Joi.date().required(),
+  completion_date:Joi.date().required()
+})

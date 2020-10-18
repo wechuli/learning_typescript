@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
-
+import {loginSchema,taskSchema} from "../helpers/validators/requestSchemas";
+import {requestValidator} from "../helpers/validators/requestValidators";
 import { IUser } from "../models/User";
+import {ITask} from "../models/Task";
 
 const router = Router();
 
@@ -16,7 +18,7 @@ router.get(
 );
 
 router.post(
-  "/login",
+  "/login",requestValidator(loginSchema),
   async (req: Request, res: Response): Promise<Response> => {
     const body: IUser = req.body;
 
@@ -27,5 +29,17 @@ router.post(
     }
   }
 );
+
+router.post("/task/create",requestValidator(taskSchema),async (req:Request,res:Response):Promise<Response> =>{
+  const body: ITask = req.body;
+
+  try {
+    return res.status(200).json({ error: false, message: body });
+  } catch (error) {
+    return res.status(500).json({ error: true, message: "unsuccessful" });
+  }
+})
+
+
 
 export default router;

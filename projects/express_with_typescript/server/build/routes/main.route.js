@@ -37,6 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
+var requestSchemas_1 = require("../helpers/validators/requestSchemas");
+var requestValidators_1 = require("../helpers/validators/requestValidators");
 var router = express_1.Router();
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -49,7 +51,20 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
         return [2 /*return*/];
     });
 }); });
-router.post("/login", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.post("/login", requestValidators_1.requestValidator(requestSchemas_1.loginSchema), function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var body;
+    return __generator(this, function (_a) {
+        body = req.body;
+        try {
+            return [2 /*return*/, res.status(200).json({ error: false, message: body })];
+        }
+        catch (error) {
+            return [2 /*return*/, res.status(500).json({ error: true, message: "unsuccessful" })];
+        }
+        return [2 /*return*/];
+    });
+}); });
+router.post("/task/create", requestValidators_1.requestValidator(requestSchemas_1.taskSchema), function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var body;
     return __generator(this, function (_a) {
         body = req.body;
