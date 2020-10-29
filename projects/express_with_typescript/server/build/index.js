@@ -12,11 +12,13 @@ const typeorm_1 = require("typeorm");
 const main_route_1 = __importDefault(require("./routes/main.route"));
 const Task_1 = require("./db/models/Task");
 const User_1 = require("./db/models/User");
+const cookie_session_1 = __importDefault(require("cookie-session"));
 const app = express_1.default();
 app.use(helmet_1.default());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 app.use(cors_1.default());
+app.use(cookie_session_1.default({ keys: ["just a fake session string"] }));
 app.use(morgan_1.default("dev"));
 // Connect to DB
 typeorm_1.createConnection({

@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 export interface IUser {
-  name: string;
   email: string;
+  password: string;
 }
 
 @Entity()
@@ -15,4 +15,7 @@ export class User implements IUser {
 
   @Column()
   email: string;
+
+  @Column()
+  password: string;
 }

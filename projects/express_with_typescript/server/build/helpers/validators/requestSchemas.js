@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.taskSchema = exports.loginSchema = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.loginSchema = joi_1.default.object({
-    name: joi_1.default.string().required(),
     email: joi_1.default.string().required(),
+    password: joi_1.default.string().required(),
 });
 exports.taskSchema = joi_1.default.object({
     title: joi_1.default.string().required(),

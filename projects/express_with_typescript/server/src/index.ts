@@ -7,6 +7,7 @@ import { createConnection } from "typeorm";
 import mainRouter from "./routes/main.route";
 import { Task } from "./db/models/Task";
 import { User } from "./db/models/User";
+import cookieSession from "cookie-session";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(cookieSession({ keys: ["just a fake session string"] }));
 app.use(morgan("dev"));
 
 // Connect to DB
