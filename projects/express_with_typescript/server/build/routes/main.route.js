@@ -11,13 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const requestSchemas_1 = require("../helpers/validators/requestSchemas");
+const auth_1 = require("../services/auth");
 const requestValidators_1 = require("../helpers/validators/requestValidators");
 const router = express_1.Router();
 // Home page
 router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
+    var _a, _b;
+    console.log((_a = req.session) === null || _a === void 0 ? void 0 : _a.loggedIn);
     try {
-        if ((_a = req.session) === null || _a === void 0 ? void 0 : _a.loggedIn) {
+        if ((_b = req.session) === null || _b === void 0 ? void 0 : _b.loggedIn) {
             return res
                 .status(200)
                 .json({ error: false, message: "successfully logged in" });
@@ -56,6 +58,18 @@ router.get("/logout", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         req.session = null;
         res.redirect("/api");
         return;
+    }
+    catch (error) {
+        return res.status(500).json({ error: true, message: "unsuccessful" });
+    }
+}));
+// access protected route
+router.get("/protected", auth_1.requireAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return res.status(200).json({
+            error: false,
+            message: "Hooray, you've accessed protected information",
+        });
     }
     catch (error) {
         return res.status(500).json({ error: true, message: "unsuccessful" });
